@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 
 export default function TextForm() {
-  const [text, setText] = useState("Enter your text here.........");
+  const [text, setText] = useState("");
   const [count, setCount] = useState(0);
   const [word, setWord] = useState(0);
   const handleClick = () => {
-    setText(
-      "I know I have hurt you! All I’m asking for is your pardon. Please forgive my mistake, and let’s start fresh. I love you Ritika 💞."
-    );
-    // setText(text.toUpperCase());
+    setText(text.toUpperCase());
+  };
+  const handleClear = () => {
+    setText("");
   };
   const handleChange = (event) => {
     const text = event.target.value;
     setText(event.target.value);
     const word = text.split(" ");
-    setWord(word.length);
+    setWord(word.length - 1);
     setCount(text.length);
   };
+
   return (
     <>
       <div className="container">
@@ -40,6 +41,14 @@ export default function TextForm() {
           style={{ marginTop: "30px" }}
         >
           Submit
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={handleClear}
+          style={{ marginTop: "30px", marginLeft: "10px" }}
+        >
+          Clear
         </button>
       </div>
       <div className="container my-3" style={{ color: "GrayText" }}>
