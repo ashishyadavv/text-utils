@@ -5,7 +5,10 @@ export default function TextForm() {
   const [count, setCount] = useState(0);
   const [word, setWord] = useState(0);
   const handleClick = () => {
-    setText(text.toUpperCase());
+    setText(
+      "I know I have hurt you! All I’m asking for is your pardon. Please forgive my mistake, and let’s start fresh. I love you Ritika 💞."
+    );
+    // setText(text.toUpperCase());
   };
   const handleChange = (event) => {
     const text = event.target.value;
