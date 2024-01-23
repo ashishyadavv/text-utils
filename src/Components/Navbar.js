@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
-import AbcIcon from "@mui/icons-material/Abc";
 export default function Navbar(props) {
+  const [isDarkMode, setDarkMode] = useState(false);
+
+  const handleToggle = () => {
+    setDarkMode(!isDarkMode);
+    document.body.style.backgroundColor = isDarkMode ? "#ffffff" : "#121212";
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -32,18 +38,31 @@ export default function Navbar(props) {
               </a>
             </li>
           </ul>
-          <form className="d-flex" role="search">
-            <img src={AbcIcon} alt="" className="src" />
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+          <div className="form-check form-switch">
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <i
+                className="bi bi-brightness-high-fill"
+                style={{ marginRight: "5px", marginTop: "15px" }}
+              >
+                {" "}
+                Dark Mode
+              </i>
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="flexSwitchCheckDefault"
+                checked={isDarkMode}
+                onChange={handleToggle}
+              />
+            </div>
+            {/* <label
+              style={{ marginTop: "0px" }}
+              className="form-check-label"
+              htmlFor="flexSwitchCheckDefault"
+            >
+              Dark Mode
+            </label> */}
+          </div>
         </div>
       </div>
     </nav>
